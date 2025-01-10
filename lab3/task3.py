@@ -19,11 +19,10 @@ class Book:
     def __repr__(self):
         return f"{self.__class__.__name__}(name={self.name!r}, author={self.author!r})"
 
-
 class PaperBook(Book):
-    def __init__(self, name: str, author: str, pages: int):
+    def __init__(self, name: str, author: str):
         super().__init__(name, author)
-        self._pages = pages
+        self._pages = None
 
     @property
     def pages(self):
@@ -45,9 +44,9 @@ class PaperBook(Book):
 
 
 class AudioBook(Book):
-    def __init__(self, name: str, author: str, duration: float):
+    def __init__(self, name: str, author: str):
         super().__init__(name, author)
-        self._duration = duration
+        self._duration = None
 
     @property
     def duration(self):
@@ -85,11 +84,11 @@ if __name__ == '__main__':
     print(book)
     print(repr(book))
 
-    paper_book = PaperBook(name='test_name_2', author='test_author_2', pages=200)
+    paper_book = PaperBook(name='test_name_2', author='test_author_2')
     print(paper_book)
     print(repr(paper_book))
 
-    audio_book = AudioBook(name='test_name_3', author='test_author_3', duration=10.5)
+    audio_book = AudioBook(name='test_name_3', author='test_author_3')
     print(audio_book)
     print(repr(audio_book))
 
