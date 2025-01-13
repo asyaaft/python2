@@ -22,7 +22,7 @@ class Book:
 class PaperBook(Book):
     def __init__(self, name: str, author: str):
         super().__init__(name, author)
-        self._pages = None
+        self._pages = self.pages
 
     @property
     def pages(self):
@@ -46,7 +46,7 @@ class PaperBook(Book):
 class AudioBook(Book):
     def __init__(self, name: str, author: str):
         super().__init__(name, author)
-        self._duration = None
+        self._duration = self.duration
 
     @property
     def duration(self):
@@ -61,7 +61,7 @@ class AudioBook(Book):
             raise TypeError("Продолжительность должна быть числом")
         if value <= 0:
             raise ValueError("Продолжительность должна быть положительным")
-        self.duration = value
+        self._duration = value
 
     def __str__(self):
         """
@@ -102,6 +102,10 @@ if __name__ == '__main__':
     except ValueError as e:
         print(f"Ошибка: {e}")
 
+    try:
+        paper_book.name = 'new name'
+    except AttributeError as e:
+        print(f"Ошибка: {e}")
     try:
         paper_book.name = 'new name'
     except AttributeError as e:
