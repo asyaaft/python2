@@ -10,21 +10,21 @@ class Book:
 
     def read(self, pages_to_read: int) -> str:
         """
-               Возвращает сообщение о том, сколько страниц книги было прочитано.
+        Возвращает сообщение о том, сколько страниц книги было прочитано.
 
-               Args:
-                   pages_to_read (int): Количество страниц для чтения.
+        Args:
+            pages_to_read (int): Количество страниц для чтения.
 
-               Returns:
-                   str: Сообщение о прочтении страниц.
+        Returns:
+            str: Сообщение о прочтении страниц.
 
-               Raises:
-                   ValueError: Если количество страниц для чтения не является положительным числом.
+        Raises:
+            ValueError: Если количество страниц для чтения не является положительным числом.
 
                >>> book = Book("The Hitchhiker's Guide to the Galaxy", "Douglas Adams", 250)
                >>> book.read(50)
                'Вы прочитали 50 страниц из 250.'
-               """
+        """
         if pages_to_read <= 0:
             raise ValueError("Количество страниц для чтения должно быть положительным числом.")
         return f"Вы прочитали {pages_to_read} страниц из {self.pages}."
@@ -34,17 +34,13 @@ class Book:
         Возвращает краткое описание книги (название и автор).
 
         Returns:
-          str: Строка, содержащая название и автора.
+            str: Строка, содержащая название и автора.
 
         >>> book = Book("Pride and Prejudice", "Jane Austen", 400)
         >>> book.get_summary()
-        'Pride and Prejudice написана Jane Austen'
+        'Jane Austen-автор книги Pride and Prejudice'
         """
-        return f"{self.title} написана {self.author}"
-
-if __name__ == "__main__":
-    import doctest
-    doctest.testmod()
+        return f"{self.author}-автор книги {self.title}"
 
 # TODO: описать ещё класс
 class Tree:
@@ -66,15 +62,15 @@ class Tree:
 
     def grow(self, growth_amount: float) -> None:
         """
-                Увеличивает высоту дерева.
+        Увеличивает высоту дерева.
 
-                Args:
-                    growth_amount: Прирост высоты (число с плавающей точкой, в метрах).
+        Args:
+            growth_amount: Прирост высоты (число с плавающей точкой, в метрах).
 
-                Raises:
-                    ValueError: Если прирост высоты не положителен.
-                    TypeError: Если прирост высоты не число.
-                """
+        Raises:
+            ValueError: Если прирост высоты не положителен.
+            TypeError: Если прирост высоты не число.
+        """
         if not isinstance(growth_amount, (int, float)):
             raise TypeError("Прирост высоты должен быть числом.")
         if growth_amount <= 0:
@@ -83,15 +79,15 @@ class Tree:
 
     def get_age(self) -> int:
         """
-                Возвращает возраст дерева.
+        Возвращает возраст дерева.
 
-                Returns:
-                    Возраст дерева (целое число).
+        Returns:
+            Возраст дерева (целое число).
 
                 >>> tree = Tree("Дуб", 10, 5)
                 >>> tree.get_age()
                 5
-                """
+        """
         return self.age
 
 # TODO: и ещё один
@@ -108,22 +104,22 @@ class Profile:
 
     def add_friend(self, num_friends: int) -> int:
         """
-                Добавляет друзей к профилю.
+        Добавляет друзей к профилю.
 
-                Args:
-                    num_friends: Количество добавляемых друзей (целое число).
+        Args:
+            num_friends: Количество добавляемых друзей (целое число).
 
-                Returns:
-                    Обновленное количество друзей (целое число).
+        Returns:
+            Обновленное количество друзей (целое число).
 
-                Raises:
-                    ValueError: если количество добавляемых друзей меньше нуля.
-                    TypeError: если num_friends не целое число.
+        Raises:
+            ValueError: если количество добавляемых друзей меньше нуля.
+            TypeError: если num_friends не целое число.
 
                 >>> profile = Profile("testuser")
                 >>> profile.add_friend(5)
                 5
-                """
+        """
         if not isinstance(num_friends, int):
             raise TypeError("Количество друзей должно быть целым числом.")
         if num_friends < 0:
@@ -133,13 +129,18 @@ class Profile:
 
     def get_username(self) -> str:
         """
-                Возвращает имя пользователя.
+        Возвращает имя пользователя.
 
-                Returns:
-                    Имя пользователя (строка).
+        Returns:
+            Имя пользователя (строка).
 
                 >>> profile = Profile("testuser")
                 >>> profile.get_username()
                 'testuser'
-                """
+        """
+
         return self.username
+
+    if __name__ == "__main__":
+        import doctest
+        doctest.testmod()
