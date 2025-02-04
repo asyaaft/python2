@@ -1,3 +1,4 @@
+from datetime import datetime
 # TODO: описать базовый класс
 class Vehicle:
     def __init__(self, make: str, model: str, year: int):
@@ -25,7 +26,6 @@ class Vehicle:
 
     def get_age(self) -> int:
         """Возвращает возраст транспортного средства."""
-        from datetime import datetime
         return datetime.now().year - self.year
 
 # TODO: описать дочерний класс
@@ -49,6 +49,13 @@ class Car(Vehicle):
     def __repr__(self) -> str:
         """Перегруженный метод __repr__ для класса Car."""
         return f"Car(make='{self.make}', model='{self.model}', year={self.year}, num_doors={self._num_doors})"
+
+    def get_num_doors(self) -> int:
+        """
+        Возвращает количество дверей автомобиля.
+        Этот метод унаследован от базового класса
+        """
+        return self._num_doors
 
     def get_age(self) -> int:
         """
@@ -75,3 +82,4 @@ if __name__ == "__main__":
         car = Car("Ford", "Focus", 2023, -2) # Проверка на ValueError
     except ValueError as e:
         print(f"Ошибка: {e}") # Вывод: Ошибка: Количество дверей должно быть положительным числом.
+        
