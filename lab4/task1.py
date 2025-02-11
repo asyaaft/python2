@@ -1,4 +1,5 @@
 from datetime import datetime
+
 # TODO: описать базовый класс
 class Vehicle:
     def __init__(self, make: str, model: str, year: int):
@@ -28,6 +29,12 @@ class Vehicle:
         """Возвращает возраст транспортного средства."""
         return datetime.now().year - self.year
 
+    def get_make(self) -> str:
+        """
+        Возвращает марку автомобиля
+        """
+        return self.make
+
 # TODO: описать дочерний класс
 class Car(Vehicle):
     """Класс для легковых автомобилей."""
@@ -53,7 +60,6 @@ class Car(Vehicle):
     def get_num_doors(self) -> int:
         """
         Возвращает количество дверей автомобиля.
-        Этот метод унаследован от базового класса
         """
         return self._num_doors
 
@@ -69,17 +75,16 @@ class Car(Vehicle):
 if __name__ == "__main__":
     vehicle = Vehicle("Toyota", "Camry", 2020)
     print(vehicle)  # Вывод: Транспортное средство: Toyota Camry, 2020 года выпуска
-    print(vehicle.get_age()) # Вывод: 3
+    print(vehicle.get_make()) # Вывод: Toyota
     print(repr(vehicle))  # Вывод: Vehicle(make='Toyota', model='Camry', year=2020)
 
 
     car = Car("Honda", "Civic", 2022, 4)
     print(car)  # Вывод: Транспортное средство: Honda Civic, 2022 года выпуска (4 двери)
-    print(car.get_age()) # Вывод: Возраст автомобиля: 1 лет.
+    print(car.get_make()) # Вывод: Honda
     print(repr(car))  # Вывод: Car(make='Honda', model='Civic', year=2022, num_doors=4)
 
     try:
         car = Car("Ford", "Focus", 2023, -2) # Проверка на ValueError
     except ValueError as e:
         print(f"Ошибка: {e}") # Вывод: Ошибка: Количество дверей должно быть положительным числом.
-        
